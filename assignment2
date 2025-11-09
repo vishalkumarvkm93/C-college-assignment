@@ -1,0 +1,118 @@
+1. What do you mean by Structures?
+
+Structure in C is a user-defined data type that allows you to combine data items of different types into a single unit.
+
+It is used to represent a record — for example, a student with name, roll number, and marks.
+
+Example:
+#include <stdio.h>
+
+struct Student {
+    int roll_no;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    struct Student s1 = {1, "Alice", 89.5};
+    printf("Roll No: %d\n", s1.roll_no);
+    printf("Name: %s\n", s1.name);
+    printf("Marks: %.2f\n", s1.marks);
+    return 0;
+}
+
+
+Here,
+
+struct Student is the structure definition.
+
+s1 is a variable of type struct Student.
+
+2. What do you mean by Array & Pointers Array?
+Array:
+
+An array is a collection of elements of the same data type, stored in contiguous memory locations.
+
+Example:
+
+int arr[5] = {10, 20, 30, 40, 50};
+
+
+Here, arr is an array of 5 integers.
+
+Pointer Array:
+
+An array of pointers is an array where each element is a pointer (usually pointing to data like variables or strings).
+
+Example:
+
+#include <stdio.h>
+
+int main() {
+    char *names[] = {"Alice", "Bob", "Charlie"};
+    for (int i = 0; i < 3; i++) {
+        printf("%s\n", names[i]);
+    }
+    return 0;
+}
+
+
+Here, names is an array of 3 pointers to char, each pointing to a string.
+
+3. Compare two structure variables using comparison operators
+
+In C, you cannot directly use == or != to compare structure variables.
+
+You must compare each member individually or use functions like memcmp().
+
+Example:
+#include <stdio.h>
+#include <string.h>
+
+struct Student {
+    int roll_no;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    struct Student s1 = {1, "Alice", 89.5};
+    struct Student s2 = {2, "Bob", 78.0};
+
+    if (s1.roll_no == s2.roll_no && strcmp(s1.name, s2.name) == 0 && s1.marks == s2.marks) {
+        printf("Structures are equal.\n");
+    } else {
+        printf("Structures are not equal.\n");
+    }
+    return 0;
+}
+
+4. Perform arithmetic operations on structures
+
+You cannot directly perform arithmetic (like +, -, *, /) on entire structures,
+but you can perform arithmetic on structure members.
+
+Example:
+#include <stdio.h>
+
+struct Point {
+    int x;
+    int y;
+};
+
+int main() {
+    struct Point p1 = {10, 20};
+    struct Point p2 = {5, 7};
+    struct Point result;
+
+    result.x = p1.x + p2.x;
+    result.y = p1.y + p2.y;
+
+    printf("Resultant Point: (%d, %d)\n", result.x, result.y);
+    return 0;
+}
+
+
+Output:
+
+Resultant Point: (15, 27)
